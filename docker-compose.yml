@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  client:
+    image: rafaelmoczalla/nextflow-node:1.0
+    command: "sh -c 'while true; do echo alive at $$(date); sleep 180; done'"
+    privileged: true
+    volumes:
+      - work:/work
+    network_mode: default
+  node:
+    image: rafaelmoczalla/nextflow-node:1.0
+    command: "nextflow node"
+    privileged: true
+    volumes:
+      - work:/work
+    network_mode: default
+volumes:
+  work:
